@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\userLogin.css">
+    <link rel="stylesheet" href="css\userSign.css">
+    <link rel="stylesheet" href="css\navbar.css">
+    <link rel="stylesheet" href="css\delivery.css">
+
+
+</head>
+<body onload="getlocation()">
+    <div id="nav">
+     <div class ="logo"  style="float:left;">
+        OnRoad
+     </div>
+     <div class="menu" style="float:right;">
+        
+             <a href="admin.html"><span>Admin Login</span> </a> 
+            
+             <a href="UserLogin.html"><span>User Login</span>  </a> 
+        
+             <a href="shop.html"><span> Mechanical Login</span> </a>
+        </ul>
+     </div>
+    </div>
+    <div id="Box-container">
+          <table id="myTable">
+            <tr>
+              <th>Customer Name</th>
+              <th>Distance</th>
+              <th>Details</th>
+              <th>Status</th>
+            </tr>
+            <tr style="display: none;">
+              <td>defaulf cell1</td>
+              <td>defaulf cell2</td>
+              <td>defaulf cell3</td>
+              <td>defaulf cell4</td>
+            </tr>
+          </table>
+
+          <button type="button" onclick="myFunction()">Try it</button>
+ 
+    </div>
+
+
+
+
+
+
+    <script src=
+    "https://maps.google.com/maps/api/js?
+     key =AIzaSyADIPFiCuzh3phV1a9z9hD9r6LsySRGcqQ&callback=getlocation">
+    </script>
+    <script type="text/javascript">
+
+     function getlocation() {
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showLoc, errHand);
+     }
+     }
+     
+        
+     let La;
+     let lo;
+     function showLoc(pos) {
+     latt = pos.coords.latitude;
+     long = pos.coords.longitude;
+     pass(latt,long);
+     var lattlong = new google.maps.LatLng(latt, long);
+     var OPTions = {
+      center: lattlong,
+      zoom: 10,
+      mapTypeControl: true,
+      navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.SMALL,
+      },
+     };
+     var mapg = new google.maps.Map(
+      document.getElementById("demo2"),
+      OPTions
+     );
+     var markerg = new google.maps.Marker({
+      position: lattlong,
+      map: mapg,
+      title: "You are here!",
+     });
+     }
+     function errHand(err) {
+     switch (err.code) {
+      case err.PERMISSION_DENIED:
+      result.innerHTML =
+       "The application doesn't have the permission" +
+       "to make use of location services";
+      break;
+      case err.POSITION_UNAVAILABLE:
+      result.innerHTML = "The location of the device is uncertain";
+      break;
+      case err.TIMEOUT:
+      result.innerHTML = "The request to get user location timed out";
+      break;
+      case err.UNKNOWN_ERROR:
+      result.innerHTML =
+       "Time to fetch location information exceeded" +
+       "the maximum timeout interval";
+      break;
+     }
+     }
+
+function arePointsNear(checkPoint, centerPoint, km) {
+  var ky = 40000 / 360;
+  var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
+  var dx = Math.abs(centerPoint.lng - checkPoint.lng) * kx;
+  var dy = Math.abs(centerPoint.lat - checkPoint.lat) * ky;
+  return Math.sqrt(dx * dx + dy * dy) <= km;
+}
+
+function pass(latt,long){
+console.log(latt +"YO");
+console.log(long +"YO");
+La = latt;
+lo = long;
+console.log(La +" "+ lo +"YO");
+
+console.log(La);
+console.log(lo);
+var Delivery= {
+  lat: latt,
+  lng: long
+};
+var Customer = {
+  lat: 11.5034,
+  lng: 77.2444
+};
+
+var n = arePointsNear(Delivery, Customer, 20);
+
+console.log(n);
+console.log(Delivery.lat + " " + Delivery.lng);
+console.log(Customer.lat + " " + Customer.lng);
+
+PassResult(n);
+}
+
+let result = true;
+        function PassResult(n){
+           result = n;
+        }
+         
+      function myFunction() {
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var Distance =" ";
+        var element = document.querySelector("#myTable > tbody > tr:nth-child(2) > td:nth-child(2)");
+        
+        console.log(result);
+        if(result == true){
+          Distance = "Within 20Km"
+          element.style.color = "green";            
+        }
+        else{
+          Distance = "It's Far"
+          element.style.color = "red";            
+
+        }
+
+        
+        
+        cell1.innerHTML = "NEW CELL1";
+        cell2.innerHTML = Distance;
+        cell3.innerHTML = "<a href='Details.html'>Click here</a>";
+        cell4.innerHTML = "NEW CELL2";
+      }
+      </script>
+</body>
+</html>

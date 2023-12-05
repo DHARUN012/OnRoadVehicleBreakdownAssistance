@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/9527bf732c.js" crossorigin="anonymous"></script>
+
+
+
+    
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\userLogin.css">
+    <link rel="stylesheet" href="css\userSign.css">
+    <link rel="stylesheet" href="css\navbar.css">
+    <link rel="stylesheet" href="css\customerHome.css">
+
+
+</head>
+<body onload="getlocation()">
+    <div id="Box-container">
+        
+            
+        <div id="demo2" style="width: 500px; height: 600px; background-color: antiquewhite;top: 20px;" ></div>
+        
+        <div class="button"> 
+        <span onclick="document.location='fuel.html'">    
+
+           <p>
+                <i class="fa-solid fa-gas-pump" style="font-size: 25px;"> </i> <br> 
+                Out Of<br>Fuel  
+            </p>
+        </span>    
+        <span>
+            <p>
+                <i class="fas fa-tools" style="font-size: 25px;"></i> <br> 
+                Need<br>Service 
+            </p>
+        </span>
+    </div>
+    </div>
+
+
+    <div id="nav">
+        <div class ="logo"  style="float:left;">
+        OnRoad
+        </div>
+        <div class="menu" style="float:right;">
+
+                <a href="" id ="logout" ><span >Log out</span> </a> 
+            
+
+        </ul>
+        </div>
+    </div>
+ 
+    <script type="text/javascript">
+
+     function getlocation() {
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showLoc, errHand);
+     }
+     }
+     
+     $(document).ready(function($){
+    $("demo2").load(function(){
+        getlocation() 
+    });
+    });
+
+     function showLoc(pos) {
+     latt = pos.coords.latitude;
+     long = pos.coords.longitude;
+     var lattlong = new google.maps.LatLng(latt, long);
+     var OPTions = {
+      center: lattlong,
+      zoom: 10,
+      mapTypeControl: true,
+      navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.SMALL,
+      },
+     };
+     var mapg = new google.maps.Map(
+      document.getElementById("demo2"),
+      OPTions
+     );
+     var markerg = new google.maps.Marker({
+      position: lattlong,
+      map: mapg,
+      title: "You are here!",
+     });
+     }
+     function errHand(err) {
+     switch (err.code) {
+      case err.PERMISSION_DENIED:
+      result.innerHTML =
+       "The application doesn't have the permission" +
+       "to make use of location services";
+      break;
+      case err.POSITION_UNAVAILABLE:
+      result.innerHTML = "The location of the device is uncertain";
+      break;
+      case err.TIMEOUT:
+      result.innerHTML = "The request to get user location timed out";
+      break;
+      case err.UNKNOWN_ERROR:
+      result.innerHTML =
+       "Time to fetch location information exceeded" +
+       "the maximum timeout interval";
+      break;
+     }
+     }
+    </script>
+       <script src=
+       "https://maps.google.com/maps/api/js?
+        key =AIzaSyADIPFiCuzh3phV1a9z9hD9r6LsySRGcqQ&callback=getlocation">
+       </script>
+        <script src="script/logout.js"></script>
+
+
+</body>
+</html>

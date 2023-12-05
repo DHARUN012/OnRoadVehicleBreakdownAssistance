@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/a010f61de2.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyADIPFiCuzh3phV1a9z9hD9r6LsySRGcqQ&callback=getlocation">
+    </script>
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\userLogin.css">
+    <link rel="stylesheet" href="css\userSign.css">
+    <link rel="stylesheet" href="css\navbar.css">
+    <link rel="stylesheet" href="css\fuel.css">
+
+
+</head>
+
+<body>
+    <div id="nav" style="z-index:100;">
+        <div class="logo" style="float:left;">
+            OnRoad
+        </div>
+        <div class="menu" style="float:right;">
+
+            <a href="admin.html"><span>Admin Login</span> </a>
+
+            <a href="delivery.html"><span>Delivery Login</span> </a>
+
+            <a href="shop.html"><span> Mechanical Login</span> </a>
+        </div>
+    </div>
+    <div id="backgroundOverlay"></div>
+    <div id="Box-container">
+        <div class="Fuel-container">
+            <div class="Fuel-content">
+                <img src="image/petrol.png" alt="Petrol">
+            </div>
+            <div class="Fuel-content">
+                <h2>Petrol</h2>
+                <h5>&#8377; <span id="PetrolCost"></span> /Ltr </h5>
+                <div class="EntryButton">
+                    <button id="minus" style="visibility:hidden;">−</button>
+                    <input type="number" value="0" id="input">
+                    <button id="plus">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="Fuel-container">
+            <div class="Fuel-content">
+                <img src="image/diesel.png" alt="diesel">
+            </div>
+            <div class="Fuel-content">
+                <h2>Diesel</h2>
+                <h5> &#8377; <span id="DieselCost"></span>/Ltr </h5>
+                <div class="EntryButton">
+                    <button id="Dieselminus" style="visibility:hidden;">−</button>
+                    <input type="Dieselnumber" value="0" id="Dieselinput">
+                    <button id="Dieselplus">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="Fuel-container">
+            <div class="Fuel-content nextContent" style="height: 50px;display: none;"></div>
+            <button class="Next"> Next >> </button>
+        </div>
+
+    </DIV>
+    <Div id="PopBoxConteiner">
+        <div class="Fuel-container" style="text-align: center;   justify-content: end; width:100%;">
+                  <div id="Close"> <a href="#" class="close-button"></a> </div>
+        </div>
+        <div class="Fuel-container" id="DieselBox">
+            <div class="Fuel-content">
+                <img src="image/diesel.png" alt="diesel">
+            </div>
+            <div class="Fuel-content">
+                <h2>Diesel</h2>
+                <h5> <span id="NoDiesel"></span> Ltr x &#8377;<span id="DieselCostpop"></span> = &#8377;<span
+                        id="DieselSumPrice"></span></h5>
+            </div>
+        </div>
+
+        <div class="Fuel-container" id="PetrolBox">
+            <div class="Fuel-content">
+                <img src="image/petrol.png" alt="Petrol">
+            </div>
+            <div class="Fuel-content">
+                <h2>Petrol</h2>
+                <h5><span id="NoPetrol"></span> Ltr x &#8377;<span id="PetrolCostpop"></span> = &#8377;<span
+                        id="PertolSumPrice"></span> </h5>
+
+            </div>
+        </div>
+
+        <div class="Fuel-container"  style="display:flex; clear: both;">
+            <div class="Fuel-content" style="height:100px;">
+                <h5>Total Cost: &#8377; <span id="TotalPrice"></span> </h5> 
+            <div class="Details"> 
+                <h6 >Your Details</h6><br>
+                <h6 ><span id ="Uname">Mukesh</span>,<span id ="PhoneNumber">9788179740</span></h6> <br>
+                <h6 href="#" class="LocationLink" > <i class="fa fa-map-marker" aria-hidden="true"> </i> <span id ="Location" style="border-bottom: 2px dotted dodgerblue;">Check Location</span></h6>
+            </div>
+            </div>
+            <div class="Fuel-content" style="height: 50px;">
+                <form method="post">
+                <input type="text" id="regno" name="regno" placeholder="Vehicle Register Number"></form>
+                <button class="cart" style="margin-top: 0px;"> Next >> </button>
+
+            </div>
+        </div>
+        
+    </Div>
+    <div id="Map" style="display:none">
+        
+        <div id="demo2">
+        </div>
+        <div id="CloseMap"> <a href="#" class="close-button"></a> </div>
+    </div>
+
+    <script src="script\fuel.js"></script>
+
+</body>
+
+</html>

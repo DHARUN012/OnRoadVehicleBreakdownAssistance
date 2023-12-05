@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital@1&display=swap');
+
+body{
+font-family:Roboto;
+}
+
+#Box-container{
+    display:flex; 
+    flex-wrap: wrap;  
+    margin: auto;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    -webkit-box-shadow: 10px 10px 47px -20px rgba(0,0,0,0.24);
+    -moz-box-shadow: 10px 10px 47px -20px rgba(0,0,0,0.24);
+    box-shadow: 10px 10px 47px -20px rgba(0,0,0,0.24);
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    width: auro;
+    overflow-x: visible;
+
+}
+
